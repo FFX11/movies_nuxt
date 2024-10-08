@@ -1,20 +1,31 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "nitro.config.ts",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/.output/server/index.mjs"
-      }
-    ],
-    "env": {
-      "NODE_ENV": "production",
-      "TMDB_API_KEY": "47de2b9e8b2462b53975d18185ac40bf"
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "ipx/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "tmdb/index.ts",
+      "use": "@vercel/node"
     }
-  }
-  
+  ],
+  "routes": [
+    {
+      "src": "/ipx(.*)",
+      "dest": "/ipx/index.ts"
+    },
+    {
+      "src": "/tmdb(.*)",
+      "dest": "/tmdb/index.ts"
+    },
+    {
+      "src": "/",
+      "dest": "/index.ts"
+    }
+  ]
+}
