@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "nitro.config.ts",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/.output/server/index.mjs"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "TMDB_API_KEY": "47de2b9e8b2462b53975d18185ac40bf"
+    }
+  }
+  
