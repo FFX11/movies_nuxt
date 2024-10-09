@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import type { Media, MediaType } from '~/types'
+import TVShowPlayer from './TVShowPlayer.vue';
+import type TVShow from './TVShow.vue';
 
 defineProps<{
   item: Media
   type: MediaType
 }>()
 
-const tab = ref<'overview' | 'videos' | 'photos'>('overview')
+const tab = ref<'content'|'overview' | 'videos' | 'photos'>('content')
 </script>
 
 <template>
   <div flex items-center justify-center gap8 py6>
+    <button n-tab :class="{ 'n-tab-active': tab === 'content' }" @click="tab = 'content'">
+      {{ $t('Content') }}
+    </button>
     <button n-tab :class="{ 'n-tab-active': tab === 'overview' }" @click="tab = 'overview'">
       {{ $t('Overview') }}
     </button>
@@ -21,6 +26,7 @@ const tab = ref<'overview' | 'videos' | 'photos'>('overview')
       {{ $t('Media Photos') }}
     </button>
   </div>
+  <MediaTVShow v-if="type === 'tv' && tab === 'content'" :item="item" :type="type" />
   <MediaOverview v-if="tab === 'overview'" :item="item" :type="type" />
   <MediaVideos v-if="tab === 'videos'" :item="item" />
   <MediaPhotos v-if="tab === 'photos'" :item="item" />

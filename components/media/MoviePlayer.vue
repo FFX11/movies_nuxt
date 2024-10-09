@@ -29,7 +29,7 @@ const loadVideo = () => {
 </script>
 
 <template>
-  <div :key="item.id" relative class="aspect-ratio-3/2 lg:aspect-ratio-25/9 bg-black">
+  <div :key="item.id" class="container bg-black rounded-lg shadow-lg">
     <!-- Movie Cover Image -->
     <div
       absolute top-0 right-0
@@ -189,5 +189,19 @@ const loadVideo = () => {
 
 .play-button:hover {
   background-color: #d70000; /* Darker red on hover */
+}
+
+.container {
+  position: relative;
+  max-width: 1200px; /* Set a maximum width for larger screens */
+  max-height: 700px; /* Set a maximum height */
+  margin: auto; /* Center the container */
+  padding: 16px; /* Add padding inside the container */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  overflow: hidden; /* Prevent overflow */
+  border-radius: 10px; /* Rounded corners for aesthetics */
 }
 </style>
