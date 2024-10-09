@@ -55,6 +55,11 @@ export default defineNuxtConfig({
     strategy: 'no_prefix',
     locales: [
       {
+        code: 'ar',
+        name: 'Arabic',
+        file: 'ar-AR.json',
+      },
+      {
         code: 'en',
         name: 'English',
         file: 'en.json',

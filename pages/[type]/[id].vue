@@ -29,7 +29,8 @@ useHead({
 
 <template>
   <div>
-    <MediaHero :item="item" />
+    <MediaMoviePlayer v-if="type === 'movie'" :item="item" :type="'movie'" />
+    <MediaTVShowPlayer v-else-if="type === 'tv'" :item="item" :type="'tv'" />    
     <MediaDetails :item="item" :type="type" />
     <CarouselBase v-if="recommendations?.results?.length">
       <template #title>

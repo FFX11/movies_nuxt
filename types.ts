@@ -1,6 +1,7 @@
 export type MediaType = 'movie' | 'tv'
 
 export interface Media {
+last_episode_to_air: any
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
@@ -40,6 +41,12 @@ export interface Media {
   external_ids?: ExternalIds
   // cast
   character?: string
+
+  // TV show specific properties
+  season_number?: number; 
+  episode_number?: number; 
+  
+  seasons?: Season[];
 }
 
 export interface Person {
@@ -126,4 +133,26 @@ export interface QueryItem {
 
 export interface Credits {
   cast: Media[]
+}
+
+[x: string]: number
+export interface Season {
+season_number: number
+  id: number;
+  name: string;
+  air_date: string;
+  episode_count: number;
+  overview: string;
+  episodes: Episode[]; // Assuming there's an Episode type defined somewhere
+}
+
+export interface Episode {
+  id: number;
+  name: string;
+  overview: string;
+  air_date: string;
+  episode_number: number;
+  vote_average: number;
+  vote_count: number;
+  // Add any additional properties you need
 }
