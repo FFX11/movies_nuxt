@@ -12,7 +12,7 @@ const tab = ref<'content'|'overview' | 'videos' | 'photos'>('content')
 </script>
 
 <template>
-  <div flex items-center justify-center gap8 py6>
+  <div flex items-center justify-center  py6>
     <button n-tab :class="{ 'n-tab-active': tab === 'content' }" @click="tab = 'content'">
       {{ $t('Content') }}
     </button>
