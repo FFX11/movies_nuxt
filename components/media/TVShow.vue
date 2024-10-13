@@ -57,13 +57,13 @@ const playEpisode = (seasonNumber: number, episodeNumber: number) => {
 
 // Computed property to check for specials and filter them
 const hasSpecials = computed(() => {
-  return props.item.seasons.some(season => season.season_number === 0);
+  return props.item.seasons?.some(season => season.season_number === 0);
 });
 
 // Filter out special seasons if they exist
 const seasonsFiltered = computed(() => {
   return hasSpecials.value
-    ? props.item.seasons.filter(season => season.season_number > 0)
+    ? props.item.seasons?.filter(season => season.season_number > 0)
     : props.item.seasons;
 });
 </script>
@@ -94,7 +94,7 @@ const seasonsFiltered = computed(() => {
       </div>
       <div class="episode-container">
         <div 
-          v-for="episode in getEpisodes(seasonsFiltered.find(season => season.season_number === expandedSeasonNumber))" 
+          v-for="episode in getEpisodes(seasonsFiltered?.find(season => season.season_number === expandedSeasonNumber))" 
           :key="episode.episode_number" 
           class="episode-card"
           @click="playEpisode(expandedSeasonNumber, episode.episode_number)"

@@ -35,7 +35,7 @@ if (item) {
 
 <template>
   <div>
-    
+    <br/>
     <MediaTVShowPlayer
       :item="item" 
       :type="'tv'" 

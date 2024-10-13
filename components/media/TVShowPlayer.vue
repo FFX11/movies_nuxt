@@ -26,14 +26,7 @@ const videoSrc = computed(() => {
 
 // State management for video playback
 const isPlaying = ref(false); // To track if the video is playing
-const trailer = computed(() => getTrailer(props.item)); // Adjust this if `item` is not defined in this scope
 
-const showModal = useIframeModal();
-function playTrailer() {
-  if (trailer.value) {
-    showModal(trailer.value);
-  }
-}
 
 const mounted = useMounted();
 
@@ -79,66 +72,15 @@ const loadVideo = () => {
 
     <!-- Overlay for Title and Watch Trailer -->
     <div
-      absolute bottom-0 left-0 top-0 px-10
+       bottom-0 left-0 top-0 px-10
       flex="~ col" justify-center
       lt-lg="bg-gradient-to-t right-0 p10"
       lg="px25 w-2/3 bg-gradient-to-r"
       from-black via-black to-transparent
       z-index="10"
     >
-      <Transition appear name="hero">
-        <div v-show="mounted">
-          <h1 mt-2 text-4xl lg:text-5xl line-clamp-2>
-            {{ item.title || item.name }}
-          </h1>
-          <div flex="~ row wrap" gap2 items-center mt4>
-            <StarsRate w-25 :value="item.vote_average" />
-            <div class="op50 hidden md:block">
-              {{ formatVote(item.vote_average) }}
-            </div>
-            <span class="op50 hidden md:block">·</span>
-            <div class="op50 hidden md:block">
-              {{ $t('{numberOfReviews} Reviews', { numberOfReviews: formatVote(item.vote_count) }) }}
-            </div>
-            <span v-if="item.release_date" op50>·</span>
-            <div v-if="item.release_date" op50>
-              {{ item.release_date.slice(0, 4) }}
-            </div>
-            <span v-if="item.runtime" op50>·</span>
-            <div v-if="item.runtime" op50>
-              {{ formatTime(item.runtime) }}
-            </div>
-          </div>
-          <p class="mt-2 op80 leading-relaxed of-hidden line-clamp-3 md:line-clamp-5 text-xs md:text-base">
-            {{ item.overview }}
-          </p>
-          <div v-if="trailer" class="py5 display-none lg:block">
-            <button
-              type="button"
-              flex="~ gap2" items-center p="x6 y3"
-              bg="gray/15 hover:gray/20" transition
-              :title="$t('Watch Trailer')"
-              @click="playTrailer()"
-            >
-              <div i-ph-play />
-              {{ $t('Watch Trailer') }}
-            </button>
-          </div>
-        </div>
-      </Transition>
     </div>
 
-    <!-- Mobile Trailer Button -->
-    <div v-if="trailer" lg:hidden absolute left-0 top-0 right-0 h="2/3" items-center justify-center>
-      <button
-        type="button"
-        items-center p10 text-5xl op20 hover:op80 transition
-        :title="$t('Watch Trailer')"
-        @click="playTrailer()"
-      >
-        <div i-ph-play-circle-light />
-      </button>
-    </div>
   </div>
 </template>
 
@@ -207,7 +149,7 @@ const loadVideo = () => {
 
 .play-button {
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 12px 24px;
