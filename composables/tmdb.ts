@@ -3,7 +3,7 @@ import { hash as ohash } from 'ohash'
 import type { Credits, Media, MediaType, PageResult, Person } from '../types'
 
 // const apiBaseUrl = 'http://localhost:3001'
-const apiBaseUrl = 'https://movies-proxy.vercel.app'
+const apiBaseUrl = 'https://appsfieldtest.ooguy.com'
 
 const promiseCache = new LRUCache<string, any>({
   max: 500,
