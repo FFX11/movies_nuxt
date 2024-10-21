@@ -39,12 +39,14 @@ const loadVideo = () => {
     </div>
 
     <!-- Iframe Container -->
+    <!-- :src="`https://vidsrc.me/embed/movie?tmdb=${props.item.id}`" -->
+
     <div class="iframe-container absolute top-0 left-0 right-0">
       <div class="player-container">
         <button v-if="!isPlaying" class="play-button" @click="loadVideo">Play</button>
         <iframe
           v-if="isPlaying"
-          :src="`https://vidsrc.me/embed/movie?tmdb=${props.item.id}`"
+          :src="`https://moviesapi.club/movie/${props.item.id}`"
           class="video-iframe"
           frameborder="0"
           referrerpolicy="origin"

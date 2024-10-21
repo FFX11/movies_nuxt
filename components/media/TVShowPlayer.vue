@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<{
 
 const route = useRoute(); // Get route parameters directly
 
+// https://vidsrc.me/embed/tv?tmdb=${tmdbId.value}&season=${season.value}&episode=${episode.value}
 // Extracting TMDB ID, season, and episode from route params
 const tmdbId = computed(() => Number(route.params.id)); // TMDB ID
 const season = computed(() => Number(route.params.season) || 1); // Default to 1 if not provided
@@ -21,7 +22,7 @@ const episode = computed(() => Number(route.params.episode) || 1); // Default to
 
 // Video source for the iframe
 const videoSrc = computed(() => {
-  return `https://vidsrc.me/embed/tv?tmdb=${tmdbId.value}&season=${season.value}&episode=${episode.value}`;
+  return `https://moviesapi.club/tv/${tmdbId.value}-${season.value}-${episode.value}`;
 });
 
 // State management for video playback
