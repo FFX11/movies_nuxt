@@ -22,6 +22,21 @@ useHead({
       href: '/movies.webp',
     },
   ],
+  script: [
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-KMZY7H1H4Z',
+      async: true,
+    },
+    {
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KMZY7H1H4Z');
+      `,
+      type: 'text/javascript',
+    },
+  ],
 })
 </script>
 
@@ -42,7 +57,7 @@ useHead({
 </template>
 
 <style>
-html, body , #__nuxt{
+html, body , #__nuxt {
   height: 100vh;
   margin: 0;
   padding: 0;
