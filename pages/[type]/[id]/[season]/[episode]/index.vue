@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import type { MediaType } from '~/types'
-
-
+import { computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import type { MediaType } from '~/types';
 
 const route = useRoute();
 const type = computed(() => route.params.type as MediaType || 'movie');
@@ -31,6 +29,20 @@ if (item) {
 } else {
   console.error('Item not found for ID:', id.value);
 }
+
+// Inject Adsterra ad script
+onMounted(() => {
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = '//fryboldlymalice.com/ce/75/ca/ce75ca7f64dfc655f0d2aa5ea5ca3cae.js';
+  script.async = true;
+  document.body.appendChild(script);
+
+  // Cleanup on unmount
+  return () => {
+    document.body.removeChild(script);
+  };
+});
 </script>
 
 <template>
