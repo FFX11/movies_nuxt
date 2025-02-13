@@ -2,10 +2,9 @@ import process from 'node:process'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-//const apiBaseUrl = 'http://localhost:3001'
-//const apiBaseUrl = 'https://proxy-tmdb.vercel.app'
+// const apiBaseUrl = 'http://localhost:3001'
+// const apiBaseUrl = 'https://proxy-tmdb.vercel.app'
 const apiBaseUrl = 'https://appsfieldtest.ooguy.com'
-
 
 export default defineNuxtConfig({
   modules: [
@@ -137,7 +136,7 @@ export default defineNuxtConfig({
       extends: [
         'html-validate:document',
         'html-validate:recommended',
-        'html-validate:standard'
+        'html-validate:standard',
       ],
       rules: {
         'svg-focusable': 'off',
@@ -150,9 +149,9 @@ export default defineNuxtConfig({
         'attribute-boolean-style': 'off',
         'doctype-style': 'off',
         // Unreasonable rule
-        'no-inline-style': 'off'
-      }
-    }
+        'no-inline-style': 'off',
+      },
+    },
   },
 
   compatibilityDate: '2024-10-16',

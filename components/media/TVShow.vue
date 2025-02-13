@@ -1,86 +1,88 @@
 <script setup lang="ts">
-import type { Media } from '~/types';
-import { ref, computed, nextTick } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { computed, nextTick, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import type { Media } from '~/types'
 
 const props = withDefaults(defineProps<{
   item: Media
 }>(), {
   item: () => ({} as Media),
-});
+})
 
-const router = useRouter();
-const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
 // Extract the tmdbId and seasonNumber from the route path
-const fullPath = route.path.split('/'); // Split the path into parts
-const tmdbId = fullPath[2]; // Get the value after 'tv/'
-const seasonNumberFromUrl = Number(fullPath[3]); // Get the value after tmdbId
-const episodeNumberFromUrl = Number(fullPath[4]); // Get the value after seasonNumber
+const fullPath = route.path.split('/') // Split the path into parts
+const tmdbId = fullPath[2] // Get the value after 'tv/'
+const seasonNumberFromUrl = Number(fullPath[3]) // Get the value after tmdbId
+const episodeNumberFromUrl = Number(fullPath[4]) // Get the value after seasonNumber
 
 // Reactive state to track the selected (expanded) season and the selected episode
-const expandedSeasonNumber = ref<number | null>(seasonNumberFromUrl || null);
-const selectedEpisodeNumber = ref<number | null>(episodeNumberFromUrl || null);
+const expandedSeasonNumber = ref<number | null>(seasonNumberFromUrl || null)
+const selectedEpisodeNumber = ref<number | null>(episodeNumberFromUrl || null)
 
 // Function to toggle the expansion of seasons
-const toggleSeason = (seasonNumber: number) => {
+function toggleSeason(seasonNumber: number) {
   if (expandedSeasonNumber.value === seasonNumber) {
-    expandedSeasonNumber.value = null; // Collapse the season if already expanded
-    selectedEpisodeNumber.value = null; // Clear selected episode when collapsing
-  } else {
-    expandedSeasonNumber.value = seasonNumber; // Expand the selected season
-    selectedEpisodeNumber.value = 1; // Automatically select the first episode
-    router.push(`/tv/${tmdbId}/${seasonNumber}/1`); // Update the URL with the first episode
+    expandedSeasonNumber.value = null // Collapse the season if already expanded
+    selectedEpisodeNumber.value = null // Clear selected episode when collapsing
   }
-};
+  else {
+    expandedSeasonNumber.value = seasonNumber // Expand the selected season
+    selectedEpisodeNumber.value = 1 // Automatically select the first episode
+    router.push(`/tv/${tmdbId}/${seasonNumber}/1`) // Update the URL with the first episode
+  }
+}
 
 // Function to generate episodes dynamically based on the episode count
-const getEpisodes = (season: any) => {
+function getEpisodes(season: any) {
   return Array.from({ length: season.episode_count }, (_, i) => ({
     episode_number: i + 1,
     name: `Episode ${i + 1}`,
-  }));
-};
+  }))
+}
 
 // Function to handle episode selection and update the URL
-const playEpisode = (seasonNumber: number, episodeNumber: number) => {
-  console.log(`Play Season ${seasonNumber}, Episode ${episodeNumber}`);
-  selectedEpisodeNumber.value = null; // Clear the highlight first
+function playEpisode(seasonNumber: number, episodeNumber: number) {
+  selectedEpisodeNumber.value = null // Clear the highlight first
   // Update the URL
-  router.push(`/tv/${tmdbId}/${seasonNumber}/${episodeNumber}`);
-  
+  router.push(`/tv/${tmdbId}/${seasonNumber}/${episodeNumber}`)
+
   // After updating the URL, set the selected episode
   nextTick(() => {
-    selectedEpisodeNumber.value = episodeNumber; // Set the selected episode
-  });
-};
+    selectedEpisodeNumber.value = episodeNumber // Set the selected episode
+  })
+}
 
 // Computed property to check for specials and filter them
 const hasSpecials = computed(() => {
-  return props.item.seasons?.some(season => season.season_number === 0);
-});
+  return props.item.seasons?.some(season => season.season_number === 0)
+})
 
 // Filter out special seasons if they exist
 const seasonsFiltered = computed(() => {
   return hasSpecials.value
     ? props.item.seasons?.filter(season => season.season_number > 0)
-    : props.item.seasons;
-});
+    : props.item.seasons
+})
 </script>
 
 <template>
   <div class="content-tab">
     <!-- Season List -->
-    <h2 class="section-title">Seasons</h2>
+    <h2 class="section-title">
+      Seasons
+    </h2>
     <div class="season-container">
       <ul class="season-list">
-        <li 
-          v-for="season in seasonsFiltered" 
-          :key="season.id" 
+        <li
+          v-for="season in seasonsFiltered"
+          :key="season.id"
           class="season-item"
           @click="toggleSeason(season.season_number)"
         >
-          <span :class="{'active': expandedSeasonNumber === season.season_number}">
+          <span :class="{ active: expandedSeasonNumber === season.season_number }">
             {{ season.season_number }} <!-- Show season number instead of name -->
           </span>
         </li>
@@ -93,12 +95,12 @@ const seasonsFiltered = computed(() => {
         <strong>Episodes for Season {{ expandedSeasonNumber }}</strong>
       </div>
       <div class="episode-container">
-        <div 
-          v-for="episode in getEpisodes(seasonsFiltered?.find(season => season.season_number === expandedSeasonNumber))" 
-          :key="episode.episode_number" 
+        <div
+          v-for="episode in getEpisodes(seasonsFiltered?.find(season => season.season_number === expandedSeasonNumber))"
+          :key="episode.episode_number"
           class="episode-card"
+          :class="{ selected: selectedEpisodeNumber === episode.episode_number }"
           @click="playEpisode(expandedSeasonNumber, episode.episode_number)"
-          :class="{'selected': selectedEpisodeNumber === episode.episode_number}"
         >
           {{ episode.episode_number }} <!-- Show only episode number -->
         </div>

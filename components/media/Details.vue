@@ -1,18 +1,18 @@
 <script setup lang="ts">
+import TVShowPlayer from './TVShowPlayer.vue'
+import type TVShow from './TVShow.vue'
 import type { Media, MediaType } from '~/types'
-import TVShowPlayer from './TVShowPlayer.vue';
-import type TVShow from './TVShow.vue';
 
 defineProps<{
   item: Media
   type: MediaType
 }>()
 
-const tab = ref<'content'|'overview' | 'videos' | 'photos'>('content')
+const tab = ref<'content' | 'overview' | 'videos' | 'photos'>('content')
 </script>
 
 <template>
-  <div flex items-center justify-center  py6>
+  <div flex items-center justify-center py6>
     <button n-tab :class="{ 'n-tab-active': tab === 'content' }" @click="tab = 'content'">
       {{ $t('Content') }}
     </button>

@@ -1,6 +1,7 @@
 {
   "extends": "./.nitro/types/tsconfig.json",
   "compilerOptions": {
+    "types": ["@types/node", "nitropack", "h3"],
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true

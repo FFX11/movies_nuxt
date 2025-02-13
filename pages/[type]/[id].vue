@@ -29,9 +29,9 @@ useHead({
 
 <template>
   <div>
-    <br/>
-    <MediaMoviePlayer v-if="type === 'movie'" :item="item" :type="'movie'" />
-    <MediaTVShowPlayer v-else-if="type === 'tv'" :item="item" :type="'tv'" />    
+    <br>
+    <MediaMoviePlayer v-if="type === 'movie'" :item="item" type="movie" />
+    <MediaTVShowPlayer v-else-if="type === 'tv'" :item="item" type="tv" />
     <MediaDetails :item="item" :type="type" />
     <CarouselBase v-if="recommendations?.results?.length">
       <template #title>

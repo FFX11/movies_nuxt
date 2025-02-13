@@ -1,67 +1,66 @@
 {
-    "Popular Movies": "الأفلام الشعبية",
-    "Top Rated Movies": "الأفلام الأعلى تقييماً",
-    "Upcoming Movies": "الأفلام القادمة",
-    "Now Playing Movies": "الأفلام المعروضة الآن",
-    "Popular TV Shows": "المسلسلات الشعبية",
-    "Top Rated TV Shows": "المسلسلات الأعلى تقييماً",
-    "TV Shows Airing Today": "المسلسلات التي تعرض اليوم",
-  
-    "Watch Trailer": "مشاهدة الإعلان",
-    "Explore more": "استكشاف المزيد",
-  
-    "Content": "المحتوى",
-    "Overview": "ملخص",
-    "Videos": "فيديوهات",
-    "Media Photos": "الصور",
-  
-    "Cast": "طاقم التمثيل",
-    "More like this": "المزيد مثل هذا",
-  
-    "Storyline": "القصة",
-    "Release Date": "تاريخ الإصدار",
-    "Runtime": "مدة العرض",
-    "Director": "المخرج",
-    "Budget": "الميزانية",
-    "Revenue": "الإيرادات",
-    "Genre": "النوع",
-    "Status": "الحالة",
-    "Language": "اللغة",
-    "Production": "الإنتاج",
-  
-    "Backdrops": "خلفيات",
-    "Posters": "الملصقات",
-  
-    "Known For": "معروف بـ",
-    "Credits": "الاعتمادات",
-    "Person Photos": "الصور",
-    "(no biography)": "(لا توجد سيرة ذاتية)",
-    "Known for": "معروف بـ",
-    "Place of birth": "مكان الولادة",
-    "Birthday": "تاريخ الميلاد",
-  
-    "Acting Credits": "التمثيل",
-    "Production Credits": "الإنتاج",
-  
-    "Type to search...": "اكتب للبحث...",
-    "Type something to search...": "اكتب شيئاً للبحث...",
-  
-    "{numberOfReviews} Reviews": "{numberOfReviews} مراجعات",
-    
-    "{numberOfImages} Images": "{numberOfImages} صور",
-    "{numberOfVideos} Videos": "{numberOfVideos} فيديوهات",
-  
-    "as {character}": "في دور {character}",
-  
-    "{count} items": "{count} عناصر",
-    "Search result for: {currentSearch}": "نتيجة البحث عن: {currentSearch}",
-  
-    "Error occurred on fetching": "حدث خطأ أثناء الجلب",
-    "Retry": "إعادة المحاولة",
-  
-    "Home": "الصفحة الرئيسية",
-    "Movies": "الأفلام",
-    "TV Shows": "المسلسلات",
-    "Search": "بحث"
-  }
-  
+  "Popular Movies": "الأفلام الشعبية",
+  "Top Rated Movies": "الأفلام الأعلى تقييماً",
+  "Upcoming Movies": "الأفلام القادمة",
+  "Now Playing Movies": "الأفلام المعروضة الآن",
+  "Popular TV Shows": "المسلسلات الشعبية",
+  "Top Rated TV Shows": "المسلسلات الأعلى تقييماً",
+  "TV Shows Airing Today": "المسلسلات التي تعرض اليوم",
+
+  "Watch Trailer": "مشاهدة الإعلان",
+  "Explore more": "استكشاف المزيد",
+
+  "Content": "المحتوى",
+  "Overview": "ملخص",
+  "Videos": "فيديوهات",
+  "Media Photos": "الصور",
+
+  "Cast": "طاقم التمثيل",
+  "More like this": "المزيد مثل هذا",
+
+  "Storyline": "القصة",
+  "Release Date": "تاريخ الإصدار",
+  "Runtime": "مدة العرض",
+  "Director": "المخرج",
+  "Budget": "الميزانية",
+  "Revenue": "الإيرادات",
+  "Genre": "النوع",
+  "Status": "الحالة",
+  "Language": "اللغة",
+  "Production": "الإنتاج",
+
+  "Backdrops": "خلفيات",
+  "Posters": "الملصقات",
+
+  "Known For": "معروف بـ",
+  "Credits": "الاعتمادات",
+  "Person Photos": "الصور",
+  "(no biography)": "(لا توجد سيرة ذاتية)",
+  "Known for": "معروف بـ",
+  "Place of birth": "مكان الولادة",
+  "Birthday": "تاريخ الميلاد",
+
+  "Acting Credits": "التمثيل",
+  "Production Credits": "الإنتاج",
+
+  "Type to search...": "اكتب للبحث...",
+  "Type something to search...": "اكتب شيئاً للبحث...",
+
+  "{numberOfReviews} Reviews": "{numberOfReviews} مراجعات",
+
+  "{numberOfImages} Images": "{numberOfImages} صور",
+  "{numberOfVideos} Videos": "{numberOfVideos} فيديوهات",
+
+  "as {character}": "في دور {character}",
+
+  "{count} items": "{count} عناصر",
+  "Search result for: {currentSearch}": "نتيجة البحث عن: {currentSearch}",
+
+  "Error occurred on fetching": "حدث خطأ أثناء الجلب",
+  "Retry": "إعادة المحاولة",
+
+  "Home": "الصفحة الرئيسية",
+  "Movies": "الأفلام",
+  "TV Shows": "المسلسلات",
+  "Search": "بحث"
+}

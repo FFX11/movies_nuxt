@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import type { Media } from '~/types'
 import { formatTime } from '~/composables/utils'
-import { ref, computed } from 'vue'
 
 const props = withDefaults(defineProps<{
   item: Media
@@ -11,10 +11,11 @@ const props = withDefaults(defineProps<{
 
 // State management for video playback
 const isPlaying = ref(false) // To track if the video is playing
+// eslint-disable-next-line unused-imports/no-unused-vars
 const mounted = useMounted()
 
 // Function to load the video
-const loadVideo = () => {
+function loadVideo() {
   isPlaying.value = true
 }
 </script>
@@ -54,8 +55,7 @@ const loadVideo = () => {
         ></iframe>
       </div>
     </div>
-
-    </div>
+  </div>
 </template>
 
 <style scoped>

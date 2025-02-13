@@ -1,40 +1,39 @@
 <script setup lang="ts">
-import type { Media } from '~/types';
-import { formatTime } from '~/composables/utils';
-import { ref, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import type { Media } from '~/types'
+import { formatTime } from '~/composables/utils'
 
-
-
+// eslint-disable-next-line unused-imports/no-unused-vars
 const props = withDefaults(defineProps<{
-  item: Media;
+  item: Media
 }>(), {
   item: () => ({} as Media),
-});
+})
 
-const route = useRoute(); // Get route parameters directly
+const route = useRoute() // Get route parameters directly
 
 // https://vidsrc.me/embed/tv?tmdb=${tmdbId.value}&season=${season.value}&episode=${episode.value}
 // Extracting TMDB ID, season, and episode from route params
-const tmdbId = computed(() => Number(route.params.id)); // TMDB ID
-const season = computed(() => Number(route.params.season) || 1); // Default to 1 if not provided
-const episode = computed(() => Number(route.params.episode) || 1); // Default to 1 if not provided
+const tmdbId = computed(() => Number(route.params.id)) // TMDB ID
+const season = computed(() => Number(route.params.season) || 1) // Default to 1 if not provided
+const episode = computed(() => Number(route.params.episode) || 1) // Default to 1 if not provided
 
 // Video source for the iframe
 const videoSrc = computed(() => {
-  return `https://moviesapi.club/tv/${tmdbId.value}-${season.value}-${episode.value}`;
-});
+  return `https://moviesapi.club/tv/${tmdbId.value}-${season.value}-${episode.value}`
+})
 
 // State management for video playback
-const isPlaying = ref(false); // To track if the video is playing
+const isPlaying = ref(false) // To track if the video is playing
 
-
-const mounted = useMounted();
+// eslint-disable-next-line unused-imports/no-unused-vars
+const mounted = useMounted()
 
 // Function to load the video
-const loadVideo = () => {
-  isPlaying.value = true;
-};
+function loadVideo() {
+  isPlaying.value = true
+}
 </script>
 
 <template>
@@ -59,7 +58,9 @@ const loadVideo = () => {
     <!-- Iframe Container -->
     <div class="iframe-container absolute top-0 left-0 right-0">
       <div class="player-container">
-        <button v-if="!isPlaying" class="play-button" @click="loadVideo">Play</button>
+        <button v-if="!isPlaying" class="play-button" @click="loadVideo">
+          Play
+        </button>
         <iframe
           v-if="isPlaying"
           :src="videoSrc"
@@ -67,21 +68,19 @@ const loadVideo = () => {
           frameborder="0"
           referrerpolicy="origin"
           allowfullscreen
-        ></iframe>
+        />
       </div>
     </div>
 
     <!-- Overlay for Title and Watch Trailer -->
     <div
-       bottom-0 left-0 top-0 px-10
+      bottom-0 left-0 top-0 px-10
       flex="~ col" justify-center
       lt-lg="bg-gradient-to-t right-0 p10"
       lg="px25 w-2/3 bg-gradient-to-r"
       from-black via-black to-transparent
       z-index="10"
-    >
-    </div>
-
+    />
   </div>
 </template>
 
